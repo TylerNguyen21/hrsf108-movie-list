@@ -24,9 +24,12 @@ class App extends React.Component {
     }
 
     addingMovieToList(val) {
+        var newMovieList = this.state.moviesList
+        newMovieList.push(val)
         this.setState({
-            moviesList: this.state.moviesList.push(val)
+            moviesList: newMovieList
         })
+        console.log(this.state.moviesList);
     }
 
     render(){
