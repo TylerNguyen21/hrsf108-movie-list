@@ -1,16 +1,17 @@
 import MovieList from './MovieList.js';
 import Search from './Search.js';
-//import AddMovie from './AddMovie.js';
+import AddMovie from './AddMovie.js';
+
 class App extends React.Component {
     constructor(props) {
         super(props),
         this.state = {
             moviesList: [
             'pokemon',
-            'The Dark Knight'
+            'The Dark Knight',
+            'Dickson'
             ]
         }
-        this._inputElement = '';
         this.addingMovieToList.bind(this);
     }
     findingMovie(title) {
@@ -22,28 +23,16 @@ class App extends React.Component {
        })
     }
 
-    addingMovieToList(e) {
-        e.preventDefault();
-        console.log(this._inputElement);
-        if(this._inputElement.value !== '') {
-          this.setState({
-            moviesList: this.state.moviesList.push(this._inputElement.value)
+    addingMovieToList(val) {
+        this.setState({
+            moviesList: this.state.moviesList.push(val)
         })
-      }
     }
 
     render(){
       return (
-          <div>
-            <form onSubmit={this.addingMovieToList}>
-              <input
-                placeholder = "add a movie"
-                ref={(a) => this._inputElement = a}
-                className="addmoviebar"
-                type="text"
-               />
-               <button type="submit">submit</button>
-            </form>
+          <div>  
+            <AddMovie add={this.addingMovieToList.bind(this)}/>
             <div>
                 <nav className="navbar">
                 <Search findMovie={this.findingMovie.bind(this)}/>
