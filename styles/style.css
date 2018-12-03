@@ -103,6 +103,7 @@ h5 {
 .movies {
   display: list-item;
   padding: 20px;
+  border: 1px solid black;
 }
 
 .header {
